@@ -7,7 +7,7 @@
         <Label Text="Data"/>
         <Entry x:Name="DataEntry" Placeholder="Olá Rodrigo Caio"/>
         <Label x:Name="ResultadoLabel"/>
-        <Button x:Name="Salvar" Clicked="OnSalvarCliked"/>
+        <Button x:Name="Salvar" Text="Salvar" Clicked="OnSalvarCliked"/>
     </StackLayout>    
 
 </ContentPage>
