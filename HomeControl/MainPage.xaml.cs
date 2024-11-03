@@ -20,14 +20,19 @@ namespace HomeControl
 
         }
 
-        //private void UpdateCounter(object sender, ValueChangedEventArgs e)
-        //{
-        //    var teste = IdCounter.Text;
-        //     IdCounter.Text = $"Valor {e.NewValue.ToString()}";
-        //    //var Controler = sender as Stepper;
-        //    //var Counter =  // this.FindByName<Label>($"{Controler.AutomationId}Counter");
-        //    //Counter.Text = $"valor: {e.NewValue}";
-        //}
+        private void UpdateCounter(object sender, ValueChangedEventArgs e)
+        {
+            var Controler = sender as Stepper;
+            if (Controler != null)
+            {
+                var LabelName = Controler.StyleId.ToString();
+                var Counter = this.FindByName<Label>(LabelName);
+                if (Counter != null)
+                {
+                    Counter.Text = $"valor: {e.NewValue}";
+                }
+            }
+        }
     }
 }
 

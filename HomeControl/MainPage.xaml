@@ -5,14 +5,15 @@
 
     <StackLayout Padding="10"> 
         <Label Text="Digite o id do item(função temporaria)"/>
-        <Stepper x:Name="Id" Minimum="0" Maximum="1000" Increment="1"/> <!-- ValueChanged="UpdateCounter"/> -->
+        <Stepper x:Name="Id" Minimum="0" Maximum="1000" Increment="1" StyleId="IdCounter" ValueChanged="UpdateCounter"/>
         <Label x:Name="IdCounter" Text="Valor: 0"></Label>
         <Label Text="Digite o nome do item"/>
         <Entry x:Name="Nome" Placeholder="Nescau"/>
         <Label Text="Digite a data de validade do item"/>
         <Entry x:Name="Validade" Placeholder="dd/mm/yyyy"/>
         <Label Text="Digite a quantidade de itens"/>
-        <Stepper x:Name="Quantidade" Minimum="0" Maximum="1000" Increment="1"/> <!-- ValueChanged="UpdateCounter"/> -->
+        <Stepper x:Name="Quantidade" Minimum="0" Maximum="1000" Increment="1"  StyleId="QuantidadeCounter" ValueChanged="UpdateCounter"/>
+        <Label x:Name="QuantidadeCounter" Text="Valor: 0"></Label>
         <Label x:Name="ResultadoLabel"/>
         <Button x:Name="Salvar" Text="Salvar" Clicked="OnSalvarCliked"/>
     </StackLayout>    
