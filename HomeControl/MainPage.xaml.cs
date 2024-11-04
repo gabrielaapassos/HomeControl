@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml;
 
 namespace HomeControl
 {
@@ -16,6 +17,11 @@ namespace HomeControl
             item.Nome = Nome.Text;
             item.Quantidade = (int)Quantidade.Value;
             //item.Categoria = DataEntry.Text;
+
+            var database = new Database;
+            database.Create(item);
+
+
             ResultadoLabel.Text = item.ToString();
 
         }
