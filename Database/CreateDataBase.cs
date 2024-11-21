@@ -1,23 +1,21 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CreateDataBase
+namespace Database
 
 {
-    public class CreateDataBase
+    public class createDataBase
     {
         private readonly SqliteConnection _connection;
-        public CreateDataBase()
+        public createDataBase()
         {
             _connection = new SqliteConnection("Data Source=utfpr_poo.db;");
-
-
         }
-
-        public void CreateTableItem(string tableName, string key, string value)
+        public bool CreateTableItem(string tableName)
         {
             string commandText = @"
                 CREATE TABLE IF NOT EXISTS tb_usuario(
@@ -28,9 +26,9 @@ namespace CreateDataBase
                     Categoria int foreing key not null
                 )    
             ";//tem que ajeitar o foreing key
-            using (var _command = new SqLiteCommand(commandText, _connection))
+            using (var _command = new SqliteCommand(commandText, _connection))
             {
-                _command.Parameters.AddWithValue("@tableName", TableName);
+                _command.Parameters.AddWithValue("@tableName", tableName);
                 int count = Convert.ToInt16(_command.ExecuteScalar());
                 return count > 0;
             }
@@ -39,10 +37,10 @@ namespace CreateDataBase
         public bool IsTableExists(string TableName)
         {
             string commandText = "SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name=@tableName";
-            using(var _command = new SqLiteCommand(commandText,_connection))
+            using (var _command = new SqliteCommand(commandText, _connection))
             {
                 _command.Parameters.AddWithValue("@tableName", TableName);
-                int count = Convert.ToInt16( _command.ExecuteScalar());
+                int count = Convert.ToInt16(_command.ExecuteScalar());
                 return count > 0;
             }
         }

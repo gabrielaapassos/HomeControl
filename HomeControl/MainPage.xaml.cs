@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml;
+using Models.models;
+//using Database;
 
 namespace HomeControl
 {
@@ -11,15 +13,15 @@ namespace HomeControl
         }
         private void OnSalvarCliked(object sender, EventArgs e)
         {
-            model.Item item = new((int)Id.Value, Nome.Text, (int)Quantidade.Value, Validade.Text);
+            Item item = new((int)Id.Value, Nome.Text, (int)Quantidade.Value, Validade.Text);
             item.Id = (int)Id.Value;
             item.Validade = Validade.Text;
             item.Nome = Nome.Text;
             item.Quantidade = (int)Quantidade.Value;
             //item.Categoria = DataEntry.Text;
 
-            var database = new Database;
-            database.Create(item);
+            //var database = new Database;
+            //database.Create(item);
 
 
             ResultadoLabel.Text = item.ToString();

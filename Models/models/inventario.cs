@@ -1,4 +1,4 @@
-namespace HomeControl.model
+namespace Models.models
 {
     public class Inventario
     {
