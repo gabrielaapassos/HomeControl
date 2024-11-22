@@ -7,10 +7,10 @@ O **Sistema de Controle de Inventário Doméstico** é um aplicativo desenvolvid
 - **Cadastro de Itens**: Registre itens com informações de quantidade e data de validade.
 - **Alertas de Validade**: Notificações automáticas para itens que estão próximos da data de vencimento.
 - **Relatórios de Estoque**: Geração de relatórios sobre os itens em estoque e suas quantidades.
-- **Persistência de Dados**: Armazenamento de informações utilizando ADO.NET e Entity Framework Core EF Core).
+- **Persistência de Dados**: Armazenamento de informações utilizando Entity Framework Core EF Core).
 
 ## Tecnologias Utilizadas
 - **C#**
-- **ADO.NET e EF Core**: Para persistência de dados.
+- **EF Core**: Para persistência de dados.
 - **Padrões de Projeto**: 
   - **UML**: Modelagem do sistema.
