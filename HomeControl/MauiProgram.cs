@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using EFCore.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeControl
 {
@@ -18,6 +20,9 @@ namespace HomeControl
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddDbContext<DataContext>();
+
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }
