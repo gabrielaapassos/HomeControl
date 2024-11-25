@@ -1,0 +1,17 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HomeControl.IU.viewmodels"
+             x:Class="HomeControl.IU.views.EditItemPage"
+             Title="Editar Item">
+    <ContentPage.BindingContext>
+        <viewmodels:EditItemViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Label Text="Editar Detalhes do Item" FontSize="Large" HorizontalOptions="Center" Margin="10" />
+        <Entry Placeholder="Nome do Item" Text="{Binding Item.Nome}" />
+        <Entry Placeholder="Quantidade" Text="{Binding Item.Quantidade}" Keyboard="Numeric" />
+        <Entry Placeholder="Validade (dd/MM/yyyy)" Text="{Binding Item.Validade}" />
+        <Button Text="Salvar Alterações" Command="{Binding SalvarCommand}" />
+    </StackLayout>
+</ContentPage>

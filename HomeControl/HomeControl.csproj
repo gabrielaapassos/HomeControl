@@ -62,4 +62,28 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="IU\views\ItemListPage.xaml.cs">
+	    <DependentUpon>ItemListPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="IU\views\AddItemPage.xaml.cs">
+	    <DependentUpon>AddItemPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="IU\views\EditItemPage.xaml.cs">
+	    <DependentUpon>EditItemPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="IU\views\ItemListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IU\views\AddItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="IU\views\EditItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

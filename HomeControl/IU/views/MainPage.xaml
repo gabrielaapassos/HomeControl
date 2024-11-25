@@ -1,0 +1,15 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HomeControl.IU.viewmodels"
+             x:Class="HomeControl.IU.views.MainPage"
+             Title="Home Control">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Label Text="Bem-vindo ao Controle de Estoque Doméstico" FontSize="Large" HorizontalOptions="Center" />
+        <Button Text="Ver Lista de Itens" />
+        <Button Text="Adicionar Item" />
+    </StackLayout>
+</ContentPage>

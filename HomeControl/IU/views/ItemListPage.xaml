@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:HomeControl.IU.viewmodels"
+             x:Class="HomeControl.IU.views.ItemListPage"
+             Title="Lista de Itens">
+    <ContentPage.BindingContext>
+        <viewmodels:ItemListViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Label Text="Itens em Estoque" FontSize="Large" HorizontalOptions="Center" Margin="10" />
+        <CollectionView ItemsSource="{Binding Itens}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal" Padding="5">
+                        <Label Text="{Binding Nome}" FontSize="Medium" />
+                        <Label Text="{Binding Quantidade}" FontSize="Medium" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
