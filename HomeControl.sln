@@ -3,11 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeControl", "HomeControl\HomeControl.csproj", "{CCE737B8-B6B2-4474-85A6-6D76D2141407}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{2553476F-A696-44FA-A8C0-72D61F8A0088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Models\Model.csproj", "{2553476F-A696-44FA-A8C0-72D61F8A0088}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore", "EFCore\EFCore.csproj", "{0B1095CF-D634-4B35-816E-A6ED6741494B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{3DAA32E6-C91A-4BAA-844B-C8DD79559A4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{15BD52A8-9763-4FA3-AC9F-873807C6C958}"
+	ProjectSection(SolutionItems) = preProject
+		ConsumoService.cs = ConsumoService.cs
+		ItemService.cs = ItemService.cs
+		RelatorioService.cs = RelatorioService.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Observers", "Observers", "{E8736396-F86C-4032-A5D8-CC938A54583E}"
+	ProjectSection(SolutionItems) = preProject
+		INotificationObserver.cs = INotificationObserver.cs
+		ObserverNotificationManager.cs = ObserverNotificationManager.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ui", "Ui", "{BDA044C4-86E1-4823-94AD-7A84270976ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{DA522601-2718-46EF-9D1B-6D55A2BA2F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "..\..\..\OneDrive\Área de Trabalho\HomeControl\WebApp.csproj", "{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,12 +34,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CCE737B8-B6B2-4474-85A6-6D76D2141407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCE737B8-B6B2-4474-85A6-6D76D2141407}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCE737B8-B6B2-4474-85A6-6D76D2141407}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{CCE737B8-B6B2-4474-85A6-6D76D2141407}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCE737B8-B6B2-4474-85A6-6D76D2141407}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCE737B8-B6B2-4474-85A6-6D76D2141407}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{2553476F-A696-44FA-A8C0-72D61F8A0088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2553476F-A696-44FA-A8C0-72D61F8A0088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2553476F-A696-44FA-A8C0-72D61F8A0088}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -29,9 +42,25 @@ Global
 		{0B1095CF-D634-4B35-816E-A6ED6741494B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B1095CF-D634-4B35-816E-A6ED6741494B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B1095CF-D634-4B35-816E-A6ED6741494B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA522601-2718-46EF-9D1B-6D55A2BA2F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA522601-2718-46EF-9D1B-6D55A2BA2F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA522601-2718-46EF-9D1B-6D55A2BA2F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA522601-2718-46EF-9D1B-6D55A2BA2F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15BD52A8-9763-4FA3-AC9F-873807C6C958} = {3DAA32E6-C91A-4BAA-844B-C8DD79559A4B}
+		{E8736396-F86C-4032-A5D8-CC938A54583E} = {3DAA32E6-C91A-4BAA-844B-C8DD79559A4B}
+		{DA522601-2718-46EF-9D1B-6D55A2BA2F1B} = {BDA044C4-86E1-4823-94AD-7A84270976ED}
+		{DA51D475-EF5B-4853-A4B0-DA6972DF36A5} = {BDA044C4-86E1-4823-94AD-7A84270976ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AC01C76-00E1-48DF-A067-95A209424288}
