@@ -1,4 +1,4 @@
-namespace Models.models
+namespace Models.Items
 {
     public class Usuario
     {

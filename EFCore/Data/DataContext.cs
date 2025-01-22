@@ -15,7 +15,7 @@ namespace EFCore.Data
         {
 
         }
-        public DbSet<Item> Itens { get; set; }
+        public DbSet<ItemEstoque> Itens { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=HomeControl.db");

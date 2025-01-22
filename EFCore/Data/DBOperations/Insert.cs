@@ -13,7 +13,7 @@ namespace EFCore.Data.DBOperations
         private static readonly DataContext _context;
         public static void TbItem(string nome, int quantidade, string validade)
         {
-            var item = new Item()
+            var item = new ItemEstoque()
             {
                 Nome = nome,
                 Quantidade = quantidade,

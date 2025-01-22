@@ -1,19 +1,21 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Models.models;
+namespace Models.Items;
 [Table("tb_items")]
-public class Item
+public class ItemEstoque
 {
     [key]
     public int Id { get; set; }
     public string Nome { get; set; }
     public int Quantidade { get; set; }
-    public string Validade { get; set; }
+    public DateTime? Validade { get; set; }
     public Categoria? Categoria { get; set; }
+    public DateTime DataAdicao { get; set; }
+    public string UnidadeMedida { get; set; }
 
     public override string ToString()
     {
-        return $"{Id},{Nome}, {Quantidade}, {Validade}";
+        return $"{Id},{Nome}, {Quantidade}, {Validade}, {Categoria}, {DataAdicao}, {UnidadeMedida}";
     }
 }
 
