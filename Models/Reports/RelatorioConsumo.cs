@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model.Reports
 {
-    internal class RelatorioConsumo
+    public class RelatorioConsumo
     {
+        public int Id { get; set; }
+        public DateTime DataGeracao { get; set; }
+        public ICollection<ProdutoConsumido> ProdutosConsumidos { get; set; }
     }
 }

@@ -1,16 +1,16 @@
-namespace Models.models
+namespace Models.Items
 {
     public class Inventario
     {
         public int Id { get; set; }
         public Usuario Usuario { get; set; }
-        public List<Item> Itens { get; set; }
+        public List<ItemEstoque> Itens { get; set; }
 
         public Inventario(int id, Usuario usuario)
         {
             Id = id;
             Usuario = usuario;
-            Itens = new List<Item>();
+            Itens = new List<ItemEstoque>();
         }
     }
 }
