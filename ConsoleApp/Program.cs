@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HomeControl.Business.Services;
+using HomeControl.EFCore.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace HomeControl.UI.ConsoleApp
 {
@@ -6,6 +9,22 @@ namespace HomeControl.UI.ConsoleApp
     {
         static void Main(string[] args)
         {
+            // Configurar o DbContext
+            var options = new DbContextOptionsBuilder<DataContext>()
+                .UseSqlite("Data Source=HomeControl.db")
+                .Options;
+
+            using var context = new DataContext(options);
+
+            // Inicializar o ItemService
+            var itemService = new ItemService(context);
+
+            // Menu principal
+            MenuPrincipal(itemService);
+        }
+        
+        static void MenuPrincipal(ItemService itemService) { 
+
             bool running = true;
 
             while (running)
@@ -25,7 +44,7 @@ namespace HomeControl.UI.ConsoleApp
                 switch (opcao)
                 {
                     case "1":
-                        AdicionarItem();
+                        AdicionarItem(itemService);
                         break;
                     case "2":
                         AtualizarQuantidade();
@@ -51,12 +70,11 @@ namespace HomeControl.UI.ConsoleApp
             }
         }
 
-        static void AdicionarItem(DataContext context)
+        static void AdicionarItem(ItemService itemService)
         {
             Console.Clear();
             Console.WriteLine("=== Adicionar Item ao Estoque ===");
 
-            // Obter os dados do usuário
             Console.Write("Nome do item: ");
             var nome = Console.ReadLine();
 
@@ -67,7 +85,6 @@ namespace HomeControl.UI.ConsoleApp
             if (!int.TryParse(Console.ReadLine(), out int quantidade))
             {
                 Console.WriteLine("Quantidade inválida!");
-                Console.WriteLine("Pressione qualquer tecla para voltar ao menu...");
                 Console.ReadKey();
                 return;
             }
@@ -76,30 +93,9 @@ namespace HomeControl.UI.ConsoleApp
             var validadeInput = Console.ReadLine();
             DateTime? validade = string.IsNullOrWhiteSpace(validadeInput) ? null : DateTime.Parse(validadeInput);
 
-            // Criar o objeto ItemEstoque
-            var item = new ItemEstoque
-            {
-                Nome = nome,
-                Categoria = categoria,
-                Quantidade = quantidade,
-                DataAdicao = DateTime.Now,
-                DataValidade = validade
-            };
+            itemService.AdicionarItem(nome, categoria, quantidade, validade);
 
-            // Salvar no banco de dados
-            try
-            {
-                context.Add(item);
-                context.SaveChanges();
-                Console.WriteLine("Item adicionado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao adicionar o item: {ex.Message}");
-            }
-
-            // Confirmar e voltar ao menu
-            Console.WriteLine("Pressione qualquer tecla para voltar ao menu...");
+            Console.WriteLine("Item adicionado com sucesso!");
             Console.ReadKey();
         }
 

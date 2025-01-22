@@ -1,24 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Models.models;
+using Models.Items;
 
-
-namespace EFCore.Data
+namespace HomeControl.EFCore.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext()
-        {
-
-        }
         public DbSet<ItemEstoque> Itens { get; set; }
+
+        // Construtor sem parâmetros para situações específicas
+        public DataContext() { }
+
+        // Construtor recomendado para passar opções
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=HomeControl.db");
+            if (!optionsBuilder.IsConfigured) // Evitar configurar se já configurado
+            {
+                optionsBuilder.UseSqlite("Data Source=HomeControl.db");
+            }
         }
     }
 }

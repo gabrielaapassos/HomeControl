@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="HomeControl.MainPage">
+
+    <StackLayout Padding="10">
+        <Label Text="Digite o id do item(função temporaria)"/>
+        <Stepper x:Name="ItemId" Minimum="0" Maximum="1000" Increment="1" StyleId="IdCounter" ValueChanged="UpdateCounter"/>
+        <Label x:Name="IdCounter" Text="Valor: 0"></Label>
+        <Label Text="Digite o nome do item"/>
+        <Entry x:Name="Nome" Placeholder="Nescau"/>
+        <Label Text="Digite a data de validade do item"/>
+        <Entry x:Name="Validade" Placeholder="dd/mm/yyyy"/>
+        <Label Text="Digite a quantidade de itens"/>
+        <Stepper x:Name="Quantidade" Minimum="0" Maximum="1000" Increment="1"  StyleId="QuantidadeCounter" ValueChanged="UpdateCounter"/>
+        <Label x:Name="QuantidadeCounter" Text="Valor: 0"></Label>
+        <Label x:Name="ResultadoLabel"/>
+        <Label x:Name="ResultadoDbLabel"/>
+        <Button x:Name="Salvar" Text="Salvar" Clicked="OnSalvarCliked"/>
+    </StackLayout>
+
+</ContentPage>

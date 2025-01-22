@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Models.models;
+﻿using HomeControl.EFCore.Data;
+using Models.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace EFCore.Data.DBOperations
     public class Insert
     {
         private static readonly DataContext _context;
-        public static void TbItem(string nome, int quantidade, string validade)
+        public static void TbItem(string nome, int quantidade, DateTime validade)
         {
             var item = new ItemEstoque()
             {
