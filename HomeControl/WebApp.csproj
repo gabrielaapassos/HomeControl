@@ -68,8 +68,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\EFCore\EFCore.csproj" />
-		<ProjectReference Include="..\Models\Models.csproj" />
 	</ItemGroup>
 
 </Project>

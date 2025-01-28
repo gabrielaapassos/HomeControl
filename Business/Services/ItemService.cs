@@ -1,5 +1,5 @@
-﻿using HomeControl.EFCore.Data;
-using HomeControl.Model.Items;
+﻿using Models.Items;
+using HomeControl.EFCore.Data;
 
 namespace HomeControl.Business.Services
 {
@@ -7,12 +7,13 @@ namespace HomeControl.Business.Services
     {
         private readonly DataContext _context;
 
+
         public ItemService(DataContext context)
         {
             _context = context;
         }
 
-        public void AdicionarItem(string nome, string categoria, int quantidade, DateTime? validade)
+        public void AdicionarItem(string nome, string categoria, int quantidade, DateTime? validade, string unidadeMedida)
         {
             var item = new ItemEstoque
             {
@@ -20,10 +21,11 @@ namespace HomeControl.Business.Services
                 Categoria = categoria,
                 Quantidade = quantidade,
                 DataAdicao = DateTime.Now,
-                DataValidade = validade
+                Validade = validade,
+                UnidadeMedida = unidadeMedida
             };
 
-            _context.ItensEstoque.Add(item);
+            _context.Itens.Add(item);
             _context.SaveChanges();
         }
     }

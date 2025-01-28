@@ -17,7 +17,9 @@ namespace HomeControl.EFCore.Data
         {
             if (!optionsBuilder.IsConfigured) // Evitar configurar se já configurado
             {
-                optionsBuilder.UseSqlite("Data Source=HomeControl.db");
+                // Caminho relativo ao diretório do projeto
+                var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "HomeControl.db");
+                optionsBuilder.UseSqlite($"Data Source={path}");
             }
         }
     }

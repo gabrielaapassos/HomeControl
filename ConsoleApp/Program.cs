@@ -89,11 +89,14 @@ namespace HomeControl.UI.ConsoleApp
                 return;
             }
 
+            Console.Write("Unidade de medida do item (ex: litros,unidades,quilos): ");
+            var unidadeMedida = Console.ReadLine();
+
             Console.Write("Data de Validade (opcional, formato: AAAA-MM-DD): ");
             var validadeInput = Console.ReadLine();
             DateTime? validade = string.IsNullOrWhiteSpace(validadeInput) ? null : DateTime.Parse(validadeInput);
 
-            itemService.AdicionarItem(nome, categoria, quantidade, validade);
+            itemService.AdicionarItem(nome, categoria, quantidade, validade, unidadeMedida);
 
             Console.WriteLine("Item adicionado com sucesso!");
             Console.ReadKey();

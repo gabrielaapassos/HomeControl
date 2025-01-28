@@ -9,7 +9,7 @@ public class ItemEstoque
     public string Nome { get; set; }
     public int Quantidade { get; set; }
     public DateTime? Validade { get; set; }
-    public Categoria? Categoria { get; set; }
+    public string? Categoria { get; set; }
     public DateTime DataAdicao { get; set; }
     public string UnidadeMedida { get; set; }
 

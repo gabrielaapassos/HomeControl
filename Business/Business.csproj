@@ -7,7 +7,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Ui\ConsoleApp\ConsoleApp.csproj" />
+		<ProjectReference Include="..\EFCore\EFCore.csproj" />
 		<ProjectReference Include="..\Models\Model.csproj" />
 	</ItemGroup>
 </Project>
