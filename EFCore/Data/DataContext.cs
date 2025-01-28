@@ -7,15 +7,16 @@ namespace HomeControl.EFCore.Data
     {
         public DbSet<ItemEstoque> Itens { get; set; }
 
+        public DbSet<Categoria> Categorias { get; set; }
+
         // Construtor sem parâmetros para situações específicas
         public DataContext() { }
 
-        // Construtor recomendado para passar opções
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured) // Evitar configurar se já configurado
+            if (!optionsBuilder.IsConfigured)
             {
                 // Caminho relativo ao diretório do projeto
                 var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "HomeControl.db");

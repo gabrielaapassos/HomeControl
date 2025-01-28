@@ -1,18 +1,16 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Models.Items;
 
 public class Categoria
 {
+    [key]
     public int Id { get; private set; }
     public string Nome { get; set; }
     public string Descricao { get; set; }
-    public List<ItemEstoque> Itens { get; private set; }
 
-    public Categoria(int id, string nome, string descricao)
-
+    public override string ToString()
     {
-        Id = id;
-        Nome = nome;
-        Descricao = descricao;
-        Itens = new List<ItemEstoque>();
+        return $"{Id}{Nome}{Descricao}";
     }
 }

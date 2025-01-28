@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models.Items;
-[Table("tb_items")]
 public class ItemEstoque
 {
     [key]

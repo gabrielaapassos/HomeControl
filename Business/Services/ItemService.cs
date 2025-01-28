@@ -1,5 +1,7 @@
 ﻿using Models.Items;
 using HomeControl.EFCore.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace HomeControl.Business.Services
 {
@@ -28,6 +30,21 @@ namespace HomeControl.Business.Services
             _context.Itens.Add(item);
 
             _context.SaveChanges();
+        }
+
+        public ItemEstoque RemoveItem(int id)
+        {
+            var item = _context.Itens.FirstOrDefault(i => i.Id == id);
+            if (item != null)
+            {
+                _context.Itens.Remove(item);
+                _context.SaveChanges();
+                return item;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public List<ItemEstoque> BuscarItens()
