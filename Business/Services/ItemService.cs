@@ -26,7 +26,14 @@ namespace HomeControl.Business.Services
             };
 
             _context.Itens.Add(item);
+
             _context.SaveChanges();
+        }
+
+        public List<ItemEstoque> BuscarItens()
+        {
+            return _context.Itens.ToList();
         }
     }
 }
+

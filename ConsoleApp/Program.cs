@@ -1,6 +1,7 @@
 ﻿using HomeControl.Business.Services;
 using HomeControl.EFCore.Data;
 using Microsoft.EntityFrameworkCore;
+using Models.Items;
 using System;
 
 namespace HomeControl.UI.ConsoleApp
@@ -34,15 +35,20 @@ namespace HomeControl.UI.ConsoleApp
                 Console.WriteLine("1. Adicionar Item ao Estoque");
                 Console.WriteLine("2. Atualizar Quantidade de Item");
                 Console.WriteLine("3. Registrar Consumo de Item");
-                Console.WriteLine("4. Gerar Relatório de Consumo");
-                Console.WriteLine("5. Gerar Relatório de Estoque Baixo");
-                Console.WriteLine("6. Sair");
+                Console.WriteLine("4. Mostrar Itens Cadastrados");
+                Console.WriteLine("5. Gerar Relatório de Consumo");
+                Console.WriteLine("6. Gerar Relatório de Estoque Baixo");
+                Console.WriteLine("0. Sair");
                 Console.Write("Escolha uma opção: ");
 
                 var opcao = Console.ReadLine();
 
                 switch (opcao)
                 {
+                    case "0":
+                        Console.WriteLine("Saindo do sistema...");
+                        running = false;
+                        break;
                     case "1":
                         AdicionarItem(itemService);
                         break;
@@ -53,14 +59,13 @@ namespace HomeControl.UI.ConsoleApp
                         RegistrarConsumo();
                         break;
                     case "4":
-                        GerarRelatorioConsumo();
+                        BuscarItens(itemService);
                         break;
                     case "5":
-                        GerarRelatorioEstoqueBaixo();
+                        GerarRelatorioConsumo();
                         break;
                     case "6":
-                        Console.WriteLine("Saindo do sistema...");
-                        running = false;
+                        GerarRelatorioEstoqueBaixo();
                         break;
                     default:
                         Console.WriteLine("Opção inválida! Pressione qualquer tecla para tentar novamente...");
@@ -98,7 +103,8 @@ namespace HomeControl.UI.ConsoleApp
 
             itemService.AdicionarItem(nome, categoria, quantidade, validade, unidadeMedida);
 
-            Console.WriteLine("Item adicionado com sucesso!");
+            Console.WriteLine($"{quantidade} {unidadeMedida} de {nome}, Vencimento: {validade} adicionado com sucesso!");
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -108,6 +114,7 @@ namespace HomeControl.UI.ConsoleApp
             Console.Clear();
             Console.WriteLine("=== Atualizar Quantidade de Item ===");
             Console.WriteLine("Funcionalidade em desenvolvimento...");
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -116,6 +123,7 @@ namespace HomeControl.UI.ConsoleApp
             Console.Clear();
             Console.WriteLine("=== Registrar Consumo de Item ===");
             Console.WriteLine("Funcionalidade em desenvolvimento...");
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -124,6 +132,7 @@ namespace HomeControl.UI.ConsoleApp
             Console.Clear();
             Console.WriteLine("=== Gerar Relatório de Consumo ===");
             Console.WriteLine("Funcionalidade em desenvolvimento...");
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -132,6 +141,20 @@ namespace HomeControl.UI.ConsoleApp
             Console.Clear();
             Console.WriteLine("=== Gerar Relatório de Estoque Baixo ===");
             Console.WriteLine("Funcionalidade em desenvolvimento...");
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
+            Console.ReadKey();
+        }
+
+        static void BuscarItens(ItemService itemService)
+        {
+            Console.Clear();
+            Console.WriteLine("=== Itens Cadastrados no estoque ===");
+            List<ItemEstoque> itensCadastrados = itemService.BuscarItens();
+            foreach (ItemEstoque item in itensCadastrados)
+            {
+                Console.WriteLine($"Id: {item.Id},Voce tem {item.Quantidade} {item.UnidadeMedida} de {item.Nome}, Vencimento: {item.Validade}");
+            }
+            Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
         }
     }
