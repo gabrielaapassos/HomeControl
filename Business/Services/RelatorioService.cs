@@ -5,7 +5,7 @@ using System;
 
 public class RelatorioService
 {
-    public class RelatorioService
+    public class Relatorioservice
     {
         public RelatorioConsumo GerarRelatorioConsumo(IEnumerable<ProdutoConsumido> consumos)
         {

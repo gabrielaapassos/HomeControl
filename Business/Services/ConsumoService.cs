@@ -3,11 +3,11 @@ using System;
 
 public class ConsumoService
 {
-    public class ConsumoService
+    public class Consumoservice
     {
         private readonly List<ProdutoConsumido> _consumos;
 
-        public ConsumoService()
+        public Consumoservice()
         {
             _consumos = new List<ProdutoConsumido>();
         }
