@@ -135,7 +135,7 @@ namespace HomeControl.UI.ConsoleApp
             var item = itemService.RemoveItem(id);
             if (item != null)
             {
-                Console.WriteLine($"{item.Quantidade} {item.Unidade} de {item.Nome}, Vencimento: {item.Validade} removido com sucesso!");
+                Console.WriteLine($"{item.Quantidade} {item.UnidadeMedida} de {item.Nome}, Vencimento: {item.Validade} removido com sucesso!");
             }else
             {
                 Console.WriteLine("item não encontrado");
@@ -188,7 +188,7 @@ namespace HomeControl.UI.ConsoleApp
             List<ItemEstoque> itensCadastrados = itemService.BuscarItens();
             foreach (ItemEstoque item in itensCadastrados)
             {
-                Console.WriteLine($"Id: {item.Id},Voce tem {item.Quantidade} {item.Unidade} de {item.Nome}, Vencimento: {item.Validade}");
+                Console.WriteLine($"Id: {item.Id},Voce tem {item.Quantidade} {item.UnidadeMedida} de {item.Nome}, Vencimento: {item.Validade}");
             }
             Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();

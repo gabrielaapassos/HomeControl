@@ -10,11 +10,11 @@ public class ItemEstoque
     public DateTime? Validade { get; set; }
     public string? Categoria { get; set; }
     public DateTime DataAdicao { get; set; }
-    public String Unidade { get; set; }
+    public String UnidadeMedida { get; set; }
 
     public override string ToString()
     {
-        return $"{Id},{Nome}, {Quantidade}, {Validade}, {Categoria}, {DataAdicao}, {Unidade}";
+        return $"{Id},{Nome}, {Quantidade}, {Validade}, {Categoria}, {DataAdicao}, {UnidadeMedida}";
     }
     //public enum UnidadeMedida
     //{
