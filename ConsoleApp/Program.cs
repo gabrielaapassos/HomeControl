@@ -2,6 +2,7 @@
 using HomeControl.EFCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Models.Items;
+
 using System;
 
 namespace HomeControl.UI.ConsoleApp
@@ -38,8 +39,7 @@ namespace HomeControl.UI.ConsoleApp
                 Console.WriteLine("5. Remover Item do Estoque");
                 Console.WriteLine("6. Gerar Relatório de Consumo");
                 Console.WriteLine("7. Gerar Relatório de Estoque Baixo");
-                Console.WriteLine("8. Adicionar Categoria ao Sistema");
-                Console.WriteLine("9. Mostrar Categorias Cadastradas");
+                Console.WriteLine("8. Gerenciar Categorias");
                 Console.WriteLine("0. Sair");
                 Console.Write("Escolha uma opção: ");
 
@@ -73,10 +73,9 @@ namespace HomeControl.UI.ConsoleApp
                         GerarRelatorioEstoqueBaixo();
                         break;
                     case "8":
-                        AdicionarCategoria(categoriaService);
+                        CategoriaConsole.MenuCategoria(categoriaService);
                         break;
                     case "9":
-                        BuscarCategorias(categoriaService);
                         break;
                     default:
                         Console.WriteLine("Opção inválida! Pressione qualquer tecla para tentar novamente...");
@@ -189,37 +188,6 @@ namespace HomeControl.UI.ConsoleApp
             foreach (ItemEstoque item in itensCadastrados)
             {
                 Console.WriteLine($"Id: {item.Id},Voce tem {item.Quantidade} {item.UnidadeMedida} de {item.Nome}, Vencimento: {item.Validade}");
-            }
-            Console.WriteLine("Aperte qualquer tecla para continuar...");
-            Console.ReadKey();
-        }
-
-        static void AdicionarCategoria(CategoriaService categoriaService)
-        {
-            Console.Clear();
-            Console.WriteLine("=== Adicionar Categoria ao Sistema ===");
-
-            Console.Write("Nome da Categoria: ");
-            var nome = Console.ReadLine();
-
-            Console.Write("Descricao da Categoria: ");
-            var descricao = Console.ReadLine();
-            
-            categoriaService.AdicionarCategoria(nome, descricao);
-
-            Console.WriteLine($"Categoria {nome}, Descrita como: {descricao} adicionada com sucesso!");
-            Console.WriteLine("Aperte qualquer tecla para continuar...");
-            Console.ReadKey();
-        }
-
-        static void BuscarCategorias(CategoriaService categoriaService)
-        {
-            Console.Clear();
-            Console.WriteLine("=== Categorias Cadastradas no Sistema ===");
-            List<Categoria> categoriasCadastrados = categoriaService.BuscarCategorias();
-            foreach (Categoria categoria in categoriasCadastrados)
-            {
-                Console.WriteLine($"Id: {categoria.Id},Categoria {categoria.Nome}, Descrita como: {categoria.Descricao}");
             }
             Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
