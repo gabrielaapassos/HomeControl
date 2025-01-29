@@ -24,7 +24,7 @@ namespace HomeControl.Business.Services
                 Quantidade = quantidade,
                 DataAdicao = DateTime.Now,
                 Validade = validade,
-                UnidadeMedida = unidadeMedida
+                Unidade  = unidadeMedida
             };
 
             _context.Itens.Add(item);
