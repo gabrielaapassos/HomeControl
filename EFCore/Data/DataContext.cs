@@ -21,6 +21,12 @@ namespace HomeControl.EFCore.Data
                 // Caminho relativo ao diretório do projeto
                 var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "HomeControl.db");
                 optionsBuilder.UseSqlite($"Data Source={path}");
+                //string projectRoot = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
+
+                //// Caminho correto do banco de dados dentro de EFCore
+                //string dbPath = Path.Combine(projectRoot, "EFCore", "HomeControl.db");
+
+                //optionsBuilder.UseSqlite($"Data Source={dbPath}");
             }
         }
     }
