@@ -15,7 +15,7 @@ namespace HomeControl.Business.Services
             _context = context;
         }
 
-        public void AdicionarItem(string nome, string categoria, int quantidade, DateTime? validade, string unidadeMedida)
+        public void AdicionarItem(string nome, Categoria categoria, int quantidade, DateTime? validade, string unidadeMedida)
         {
             var item = new ItemEstoque
             {

@@ -52,7 +52,7 @@ namespace HomeControl.UI.ConsoleApp
                         running = false;
                         break;
                     case "1":
-                        AdicionarItem(itemService);
+                        AdicionarItem(itemService,categoriaService);
                         break;
                     case "2":
                         AtualizarQuantidade();
@@ -85,7 +85,7 @@ namespace HomeControl.UI.ConsoleApp
             }
         }
 
-        static void AdicionarItem(ItemService itemService)
+        static void AdicionarItem(ItemService itemService,CategoriaService categoriaService)
         {
             Console.Clear();
             Console.WriteLine("=== Adicionar Item ao Estoque ===");
@@ -93,8 +93,18 @@ namespace HomeControl.UI.ConsoleApp
             Console.Write("Nome do item: ");
             var nome = Console.ReadLine();
 
-            Console.Write("Categoria do item: ");
-            var categoria = Console.ReadLine();
+            CategoriaConsole.MostrarCategorias(categoriaService);
+
+            Console.Write("Selecione o Id da categoria a qual o item se encaixa:");
+            if (!int.TryParse(Console.ReadLine(), out int idCategoria))
+            {
+                Console.WriteLine("Quantidade inválida!");
+                Console.ReadKey();
+                return;
+            }
+            var categoria = categoriaService.PegaCategoria(idCategoria);
+            
+
 
             Console.Write("Quantidade inicial: ");
             if (!int.TryParse(Console.ReadLine(), out int quantidade))

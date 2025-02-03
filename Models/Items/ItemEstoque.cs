@@ -1,14 +1,17 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models.Items;
 public class ItemEstoque
 {
-    [key]
+    [Key]
     public int Id { get; set; }
     public string Nome { get; set; }
     public int Quantidade { get; set; }
     public DateTime? Validade { get; set; }
-    public string? Categoria { get; set; }
+    [ForeignKey("IdCategoria")]
+    public Categoria Categoria { get; set; }
+    public int IdCategoria { get; set; } 
     public DateTime DataAdicao { get; set; }
     public String UnidadeMedida { get; set; }
 
@@ -16,14 +19,4 @@ public class ItemEstoque
     {
         return $"{Id},{Nome}, {Quantidade}, {Validade}, {Categoria}, {DataAdicao}, {UnidadeMedida}";
     }
-    //public enum UnidadeMedida
-    //{
-    //    Unidades,
-    //    Quilos,
-    //    Litros
-    //}
-}
-
-internal class keyAttribute : Attribute
-{
 }

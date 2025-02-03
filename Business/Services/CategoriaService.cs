@@ -30,6 +30,25 @@ namespace HomeControl.Business.Services
         {
             return _context.Categorias.ToList();
         }
+
+        public Categoria RemoveCategoria(int id) {
+            var categoria = PegaCategoria(id);
+            if (categoria != null)
+            {
+                _context.Categorias.Remove(categoria);
+                _context.SaveChanges();
+                return categoria;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public Categoria PegaCategoria(int id)
+        {
+            return _context.Categorias.FirstOrDefault(i => i.Id == id);
+        }
     }
 }
 

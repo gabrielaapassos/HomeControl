@@ -17,10 +17,11 @@ namespace HomeControl.UI.ConsoleApp
 
             while (running)
             {
-                Console.Clear();
+                MostrarCategorias(categoriaService);
+                Console.WriteLine();
                 Console.WriteLine("=== Sistema de Controle de Estoque Doméstico ===");
                 Console.WriteLine("1. Adicionar Categoria ao Sistema");
-                Console.WriteLine("2. Mostrar Categorias Cadastradas");
+                Console.WriteLine("2. Remover Categoria do Sistema");
                 Console.WriteLine("0. Voltar");
                 Console.Write("Escolha uma opção: ");
 
@@ -36,7 +37,7 @@ namespace HomeControl.UI.ConsoleApp
                         AdicionarCategoria(categoriaService);
                         break;
                     case "2":
-                        BuscarCategorias(categoriaService);
+                        RemoverCategoria(categoriaService);
                         break;
                     default:
                         Console.WriteLine("Opção inválida! Pressione qualquer tecla para tentar novamente...");
@@ -63,17 +64,42 @@ namespace HomeControl.UI.ConsoleApp
             Console.ReadKey();
         }
 
-        static void BuscarCategorias(CategoriaService categoriaService)
+
+        static void RemoverCategoria(CategoriaService categoriaService)
         {
-            Console.Clear();
-            Console.WriteLine("=== Categorias Cadastradas no Sistema ===");
-            List<Categoria> categoriasCadastrados = categoriaService.BuscarCategorias();
-            foreach (Categoria categoria in categoriasCadastrados)
+            Console.WriteLine();
+            Console.WriteLine("=== Remover Categoria do Sistema ===");
+
+            Console.Write("Id da Categoria: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
             {
-                Console.WriteLine($"Id: {categoria.Id},Categoria {categoria.Nome}, Descrita como: {categoria.Descricao}");
+                Console.WriteLine("Id inválido!");
+                Console.ReadKey();
+                return;
+            }
+
+            var categoria = categoriaService.RemoveCategoria(id);
+            if (categoria != null)
+            {
+                Console.WriteLine($"Categoria {categoria.Nome}, Descrita como: {categoria.Descricao} removida com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Categoria não encontrada");
             }
             Console.WriteLine("Aperte qualquer tecla para continuar...");
             Console.ReadKey();
+        }
+
+        public static void MostrarCategorias(CategoriaService categoriaService)
+        {
+            Console.Clear();
+            Console.WriteLine("=== Categorias Cadastradas no Sistema ===");
+            List<Categoria> categoriasCadastradas = categoriaService.BuscarCategorias();
+            foreach (Categoria categoria in categoriasCadastradas)
+            {
+                Console.WriteLine($"Id: {categoria.Id},Categoria {categoria.Nome}, Descrita como: {categoria.Descricao}");
+            }
         }
     }
 }

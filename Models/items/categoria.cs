@@ -1,10 +1,10 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Models.Items;
 
 public class Categoria
 {
-    [key]
+    [Key]
     public int Id { get; private set; }
     public string Nome { get; set; }
     public string Descricao { get; set; }
